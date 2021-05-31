@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoandrod"
+    android:foregroundTint="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="239dp"
+            android:layout_height="161dp"
+            android:layout_marginTop="68dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_login__1_"
+            android:layout_gravity="center"/>
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="301dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+
+            android:background="@color/black"
+
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/user"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:hint="Correo"
+            android:inputType="textPersonName"
+            android:shadowColor="#E91E63"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.543"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            tools:visibility="visible" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="301dp"
+            android:layout_height="51dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/candado"
+            android:drawablePadding="15dp"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="24sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.563"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+        <Button
+            android:id="@+id/btnEnter2"
+            android:layout_width="262dp"
+            android:layout_height="50dp"
+
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/black"
+            android:onClick="singin"
+            android:text="Ingresar"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            app:iconTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+        <Button
+        android:id="@+id/btnEnter"
+        android:layout_width="263dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+
+        android:backgroundTint="@color/black"
+        android:onClick="RegistrarActivity"
+        android:text="Registarse"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnter2"
+        android:layout_gravity="center"/>
+
+        <Button
+        android:id="@+id/button"
+        android:layout_width="303dp"
+        android:layout_height="67dp"
+        android:layout_marginTop="22dp"
+        android:backgroundTint="@color/black"
+        android:onClick="RegisterAparment"
+        android:text="Registrar apartamentos"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnEnter"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

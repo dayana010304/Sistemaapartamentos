@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626315245324",
+    "project_id": "sistema-apartamentos-ffc64",
+    "storage_bucket": "sistema-apartamentos-ffc64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626315245324:android:3221f677e22aa2d1e5fb29",
+        "android_client_info": {
+          "package_name": "com.sistema.apartamentos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626315245324-4vvgvh60slb1djt6b2f34i9l728bcej6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB678U7iv0lwjDar9Is2fBg9JlqFVnS-mk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626315245324-4vvgvh60slb1djt6b2f34i9l728bcej6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
