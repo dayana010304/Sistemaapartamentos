@@ -1,15 +1,13 @@
 package com.sistema.apartamentos;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -17,7 +15,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -65,31 +62,35 @@ public class RegisterActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        if (etName.getText().toString().isEmpty()) {
-                            Toast.makeText(RegisterActivity.this, "Campo Nombre vacio", Toast.LENGTH_SHORT).show();
+                        if (etIdentification.getText().toString().isEmpty()) {
+                            Toast.makeText(RegisterActivity.this, "Campo Identificacion vacio", Toast.LENGTH_SHORT).show();
                         } else {
-                            if (etLastName.getText().toString().isEmpty()) {
-                                Toast.makeText(RegisterActivity.this, "Campo Apellido vacio", Toast.LENGTH_SHORT).show();
+                            if (etName.getText().toString().isEmpty()) {
+                                Toast.makeText(RegisterActivity.this, "Campo Nombre vacio", Toast.LENGTH_SHORT).show();
                             } else {
-                                if (etEmail1.getText().toString().isEmpty()) {
-                                    Toast.makeText(RegisterActivity.this, "Campo Email vacio", Toast.LENGTH_SHORT).show();
+                                if (etLastName.getText().toString().isEmpty()) {
+                                    Toast.makeText(RegisterActivity.this, "Campo Apellido vacio", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    if (etCountry.getText().toString().isEmpty()) {
-                                        Toast.makeText(RegisterActivity.this, "Campo pais vacio", Toast.LENGTH_SHORT).show();
+                                    if (etEmail1.getText().toString().isEmpty()) {
+                                        Toast.makeText(RegisterActivity.this, "Campo Email vacio", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        if (etCity.getText().toString().isEmpty()) {
-                                            Toast.makeText(RegisterActivity.this, "Campo ciudad vacio", Toast.LENGTH_SHORT).show();
+                                        if (etCountry.getText().toString().isEmpty()) {
+                                            Toast.makeText(RegisterActivity.this, "Campo pais vacio", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            if (etPassword1.getText().toString().isEmpty()) {
-                                                Toast.makeText(RegisterActivity.this, "Campo contraseña vacio", Toast.LENGTH_SHORT).show();
+                                            if (etCity.getText().toString().isEmpty()) {
+                                                Toast.makeText(RegisterActivity.this, "Campo ciudad vacio", Toast.LENGTH_SHORT).show();
                                             } else {
-                                                if (etPassword2.getText().toString().isEmpty()) {
-                                                    Toast.makeText(RegisterActivity.this, "Campo confirmar contraseña vacio", Toast.LENGTH_SHORT).show();
+                                                if (etPassword1.getText().toString().isEmpty()) {
+                                                    Toast.makeText(RegisterActivity.this, "Campo contraseña vacio", Toast.LENGTH_SHORT).show();
                                                 } else {
-                                                    Toast.makeText(RegisterActivity.this, "Usuario registrado con exito", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                                                    startActivity(intent);
-                                                    registerUser(email1, password1);
+                                                    if (etPassword2.getText().toString().isEmpty()) {
+                                                        Toast.makeText(RegisterActivity.this, "Campo confirmar contraseña vacio", Toast.LENGTH_SHORT).show();
+                                                    } else {
+                                                        Toast.makeText(RegisterActivity.this, "Usuario registrado con exito", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                                                        startActivity(intent);
+                                                        registerUser(email1, password1);
+                                                    }
                                                 }
                                             }
                                         }
@@ -100,7 +101,6 @@ public class RegisterActivity extends AppCompatActivity {
                     }
 
                 })
-
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
@@ -125,7 +125,5 @@ public class RegisterActivity extends AppCompatActivity {
 
                 });
     }
-
-
 }
 

@@ -119,22 +119,6 @@
         app:layout_constraintTop_toBottomOf="@+id/btnEnter2"
         android:layout_gravity="center"/>
 
-        <Button
-        android:id="@+id/button"
-        android:layout_width="303dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="22dp"
-        android:backgroundTint="@color/black"
-        android:onClick="RegisterAparment"
-        android:text="Registrar apartamentos"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnEnter"
-            android:layout_gravity="center"/>
-
     </LinearLayout>
 
     </ScrollView>
