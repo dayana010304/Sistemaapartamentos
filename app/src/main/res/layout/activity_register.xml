@@ -36,31 +36,12 @@
             app:srcCompat="@drawable/ic_log_in" />
 
         <EditText
-            android:id="@+id/etIdentification"
-            android:layout_width="301dp"
-            android:layout_height="51dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
-            android:ems="10"
-            android:hint="Identificacion"
-            android:inputType="textPersonName"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-        <EditText
             android:id="@+id/etName"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_margin="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Nombre"
             android:inputType="textPersonName"
@@ -76,10 +57,9 @@
         <EditText
             android:id="@+id/etLastName"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Apellido"
             android:inputType="textPersonName"
@@ -93,11 +73,10 @@
         <EditText
             android:id="@+id/etEmail1"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Correo"
             android:inputType="textEmailAddress"
@@ -112,11 +91,10 @@
         <EditText
             android:id="@+id/etCountry"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Pais"
             android:inputType="textPersonName"
@@ -131,11 +109,10 @@
         <EditText
             android:id="@+id/etCity"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Ciudad"
             android:inputType="textPersonName"
@@ -150,11 +127,10 @@
         <EditText
             android:id="@+id/etPassword1"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Contraseña"
             android:inputType="textPassword"
@@ -169,11 +145,10 @@
         <EditText
             android:id="@+id/etPassword2"
             android:layout_width="301dp"
-            android:layout_height="51dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/black"
             android:ems="10"
             android:hint="Confirmar Contraseña"
             android:inputType="textPassword"
@@ -184,6 +159,32 @@
             app:layout_constraintHorizontal_bias="0.463"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etPassword1" />
+
+        <TextView
+            android:id="@+id/tvRol"
+            android:layout_width="301dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="Rol"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbAnfitrion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Anfitrion"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/rbInvitado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invitado"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnRegister"

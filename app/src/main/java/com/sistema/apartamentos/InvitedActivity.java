@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,26 +30,23 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import org.jetbrains.annotations.NotNull;
-
 import Models.ApartmentModel;
 
-public class ListApartmentActivity extends AppCompatActivity {
+public class InvitedActivity extends AppCompatActivity {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     RecyclerView rvFirestoreApartmentList;
     FirestoreRecyclerAdapter adapter;
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     TextView tvRol1, tvNombre1;
     String rol, password, email;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_apartment);
+        setContentView(R.layout.activity_invited);
         rvFirestoreApartmentList = findViewById(R.id.rvFirestoreApartmentList);
         loadPreferences();
-
 
         tvNombre1 = findViewById(R.id.tvNombre1);
         tvRol1 = findViewById(R.id.tvRol1);
@@ -81,15 +77,14 @@ public class ListApartmentActivity extends AppCompatActivity {
             }
         });
 
-
         Query query = db.collection("apartments");
 
         FirestoreRecyclerOptions<ApartmentModel> options = new FirestoreRecyclerOptions.Builder<ApartmentModel>()
                 .setQuery(query, ApartmentModel.class)
                 .build();
-        adapter = new FirestoreRecyclerAdapter<ApartmentModel, ApartmentsViewHolder>(options) {
+        adapter = new FirestoreRecyclerAdapter<ApartmentModel, ListApartmentActivity.ApartmentsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ApartmentsViewHolder holder, int position, @NonNull ApartmentModel model) {
+            protected void onBindViewHolder(@NonNull ListApartmentActivity.ApartmentsViewHolder holder, int position, @NonNull ApartmentModel model) {
 
                 DocumentSnapshot modelDocument = getSnapshots().getSnapshot(holder.getAdapterPosition());
                 final String id = getSnapshots().getSnapshot(position).getId();
@@ -101,44 +96,28 @@ public class ListApartmentActivity extends AppCompatActivity {
                 holder.tvNumberHab.setText(model.getNumberhab());
                 holder.tvValueNight.setText(model.getValuenight());
                 holder.tvReviewApar.setText(model.getReviewapar());
-                holder.btnDelete.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(ListApartmentActivity.this, "" + id, Toast.LENGTH_SHORT).show();
-                        deleteApartment(id);
-                    }
-                });
-                holder.btnEditApartment.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(ListApartmentActivity.this, EditAparmentActivity.class);
-                        intent.putExtra("modelId", id);
-                        startActivity(intent);
-                        Toast.makeText(ListApartmentActivity.this, "Ir a actualizar datos", Toast.LENGTH_SHORT).show();
-
-                    }
-                });
 
             }
 
             @NonNull
             @Override
-            public ApartmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_sigle, parent, false);
-                return new ApartmentsViewHolder(view);
+            public ListApartmentActivity.ApartmentsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_sigle_invited, parent, false);
+                return new ListApartmentActivity.ApartmentsViewHolder(view);
             }
         };
+
         rvFirestoreApartmentList.setHasFixedSize(true);
         rvFirestoreApartmentList.setLayoutManager(new LinearLayoutManager(this));
         rvFirestoreApartmentList.setAdapter(adapter);
     }
 
-    static class ApartmentsViewHolder extends RecyclerView.ViewHolder {
+    private class ApartmentsViewHolder extends RecyclerView.ViewHolder {
         TextView tvOwner, tvCountry, tvCity, tvAddress, tvNumberHab, tvValueNight, tvReviewApar;
-        Button btnDelete, btnEditApartment;
 
         public ApartmentsViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tvOwner = itemView.findViewById(R.id.tvOwner);
             tvCountry = itemView.findViewById(R.id.tvCountry);
             tvCity = itemView.findViewById(R.id.tvCity);
@@ -146,35 +125,8 @@ public class ListApartmentActivity extends AppCompatActivity {
             tvNumberHab = itemView.findViewById(R.id.tvNumberHab);
             tvValueNight = itemView.findViewById(R.id.tvValueNight);
             tvReviewApar = itemView.findViewById(R.id.tvReviewApar);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
-            btnEditApartment = itemView.findViewById(R.id.btnEditApartment);
-
         }
     }
-
-    public void deleteApartment(String id) {
-        db.collection("apartments").document(id)
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ListApartmentActivity.this, "Apartamento eliminado", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ListApartmentActivity.this, "No se pudo eliminar", Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-
-    public void loadPreferences() {
-        SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
-        String userState = preferences.getString("state", "error");
-        Toast.makeText(this, userState, Toast.LENGTH_SHORT).show();
-    }
-
 
     @Override
     protected void onStart() {
@@ -187,10 +139,14 @@ public class ListApartmentActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
-
+    public void loadPreferences() {
+        SharedPreferences preferences = getSharedPreferences("user", Context.MODE_PRIVATE);
+        String userState = preferences.getString("state", "error");
+        Toast.makeText(this, userState, Toast.LENGTH_SHORT).show();
+    }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.overflow, menu);
+        getMenuInflater().inflate(R.menu.overflow2, menu);
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item){
@@ -202,27 +158,21 @@ public class ListApartmentActivity extends AppCompatActivity {
         }
 
         else if (id == R.id.item2){
-            Intent intent2 = new Intent(this,RegisterAparmentActivity.class);
+            Intent intent2 = new Intent(this, perfiluserActivity.class);
+            intent2.putExtra("email",email);
+            intent2.putExtra("rol",rol);
+            intent2.putExtra("password",password);
             this.startActivity(intent2);
             return true;
         }
         else if (id == R.id.item3){
-            Intent intent3 = new Intent(this, perfiluserActivity.class);
+            Intent intent3 = new Intent(this, editUserInvitedActivity.class);
             intent3.putExtra("email",email);
             intent3.putExtra("rol",rol);
             intent3.putExtra("password",password);
             this.startActivity(intent3);
             return true;
         }
-        else if (id == R.id.item4){
-            Intent intent4 = new Intent(this, editUserActivity.class);
-            intent4.putExtra("email",email);
-            intent4.putExtra("rol",rol);
-            intent4.putExtra("password",password);
-            this.startActivity(intent4);
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
-
 }

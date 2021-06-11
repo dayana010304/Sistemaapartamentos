@@ -11,7 +11,10 @@
         android:roundIcon="@drawable/inicie"
         android:supportsRtl="true"
         android:theme="@style/Theme.SistemaApartamentos">
-        <activity android:name=".perfiluserActivity"></activity>
+        <activity android:name=".editUserInvitedActivity"></activity>
+        <activity android:name=".editUserActivity" />
+        <activity android:name=".InvitedActivity" />
+        <activity android:name=".perfiluserActivity" />
         <activity android:name=".EditAparmentActivity" />
         <activity android:name=".ListApartmentActivity" />
         <activity android:name=".RegisterAparmentActivity" />

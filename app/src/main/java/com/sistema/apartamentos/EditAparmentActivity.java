@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import java.util.Map;
 
 public class EditAparmentActivity extends AppCompatActivity {
 
+    String rol, password, email;
     private String modelId;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     EditText edittCountry, edittCity, edittNumberHab, edittValueNight, edittReviewApar;
@@ -31,6 +34,10 @@ public class EditAparmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_aparment);
+
+        email = getIntent().getStringExtra("email");
+        rol = getIntent().getStringExtra("rol");
+        password = getIntent().getStringExtra("password");
 
         modelId = getIntent().getStringExtra("modelId");
         edittCountry = findViewById(R.id.edittCountry);
@@ -41,9 +48,7 @@ public class EditAparmentActivity extends AppCompatActivity {
         edittValueNight = findViewById(R.id.edittValueNight);
         edittReviewApar = findViewById(R.id.edittReviewApart);
 
-    }
 
-    public void obtenerDatos (View view){
         db.collection("apartments").document(modelId)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -106,4 +111,5 @@ public class EditAparmentActivity extends AppCompatActivity {
     public void onBackPressed(){
         super.onBackPressed();
     }
+
 }

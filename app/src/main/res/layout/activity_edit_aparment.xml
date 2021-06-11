@@ -189,18 +189,6 @@
                 app:cornerRadius="20dp"
                 android:layout_gravity="center"/>
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="195dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="15dp"
-                android:backgroundTint="@color/black"
-                android:onClick="obtenerDatos"
-                android:text="Mostrar datos"
-                android:textColor="@color/white"
-                app:cornerRadius="20dp"
-                android:layout_gravity="center"/>
-
         </LinearLayout>
     </ScrollView>
 
